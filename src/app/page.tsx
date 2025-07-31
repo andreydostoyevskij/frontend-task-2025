@@ -1,33 +1,37 @@
 "use client";
 import { Button } from "@heroui/button";
 import { useEffect, useState } from "react";
-import api from "@/services/api";
+
+import { getStaticProps } from "next/dist/build/templates/pages";
+import { ThemeSwitcher } from "./components/ThemeSwitcher";
+import LoginPage from "./login/page";
 
 export default function Home() {
-  const [currencies, setCurrencies] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    api
-      .get("/currencies")
-      .then((res) => setCurrencies(res.data))
-      .catch((err) => console.error("Error fetching currencies:", err))
-      .finally(() => setLoading(false));
-  }, []);
+  // const [currencies, setCurrencies] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   fetch("https://653fb0ea9e8bd3be29e10cd4.mockapi.io/api/v1/currencies")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching currencies:", error);
+  //     });
+  // }, []);
 
-  if (loading) return <p>Loading...</p>;
   return (
     // components/MyButton.tsx
-    <>
-      <Button className="rounded-md bg-blue-500 px-4 py-2 text-white">
-        Click me
-      </Button>
-      <ul>
-        {currencies.map((currency: any) => (
-          <li key={currency.id}>
-            {currency.code} - {currency.symbol}
-          </li>
-        ))}
-      </ul>
-    </>
+    // <>
+    //   <ul>
+    //     {currencies.map((currency: any) => (
+    //       <li key={currency.id}>
+    //         {currency.code} - {currency.symbol}
+    //       </li>
+    //     ))}
+    //   </ul>
+    //   <ThemeSwitcher />
+    // </>
+    <LoginPage />
   );
 }
